@@ -1,9 +1,14 @@
 const express=require('express')
+const userRouter = require('./routes/userRouter');
 const app=express();
+// middleware
+app.use(express.json());
 
-app.get('/',(req,res)=>{res.send('hello world')})
+
+//routes
+app.use("/api/v1/users",userRouter);
 
 
-const port=3000;
-app.listen(port,()=>console.log(`app is listening is at ${port}`))
 
+
+module.exports=app;
